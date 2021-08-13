@@ -8,6 +8,7 @@ class Input extends Component {
   }
 
   handleChange(e) {
+    console.log(this.props.onChange, e);
     this.props.onChange && this.props.onChange(e.target.value);
   }
 
