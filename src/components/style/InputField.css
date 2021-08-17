@@ -1,0 +1,7 @@
+.input-field {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  align-items: center;
+  column-gap: 10px;
+  margin-bottom: 10px;
+}

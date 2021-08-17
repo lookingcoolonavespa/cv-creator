@@ -1,10 +1,14 @@
 import React from 'react';
 import Input from './Input.js';
+import Textarea from './Textarea.js';
 
-const InputField = ({ label, ...inputProps }) => (
+import './style/InputField.css';
+
+const InputField = ({ label, input, ...inputProps }) => (
   <div className="input-field">
     {label && <label>{label}</label>}
-    <Input {...inputProps} />
+    {input === true && <Input {...inputProps} />}
+    {input === false && <Textarea {...inputProps} />}
   </div>
 );
 

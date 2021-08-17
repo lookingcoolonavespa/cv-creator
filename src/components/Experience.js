@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import uniqid from 'uniqid';
 
 import helpers from '../helpers.js';
 
@@ -11,40 +10,77 @@ class Education extends Component {
     super(props);
 
     this.state = {
-      blocks: [{ id: uniqid() }],
+      blocks: [],
     };
 
-    this.onDelete = helpers.onDelete.bind(this);
-    this.onAdd = helpers.onAdd.bind(this);
+    this.onDelete = helpers.onDeleteBlock.bind(this);
+    this.onAdd = helpers.onAddBlock.bind(this);
   }
 
   render() {
-    let sections = [];
     const { blocks } = this.state;
-    for (let i = 0; i < blocks.length; i++) {
-      const id = blocks[i].id;
-      const section = (
-        <div key={id}>
-          <InputField className="position-input" label="Position" type="text" />
-          <InputField className="company-input" label="Company" type="text" />
-          <InputField className=" city-input" label="City" type="text" />
-          <InputField className="from-input" label="From" type="text" />
-          <InputField className="to-input" label="To" type="text" />
-          <InputField
-            className="job-details-input"
-            label="Details"
-            type="text"
-          />
-          <Button text="Delete" clickEvent={() => this.onDelete(id)} />
-        </div>
-      );
-
-      sections.push(section);
-    }
 
     return (
       <section>
-        {sections}
+        <h2>Experience</h2>
+        {blocks.map((block) => {
+          const id = block.id;
+          return (
+            <div key={id}>
+              <InputField
+                input={true}
+                className="position-input"
+                label="Position"
+                type="text"
+                onChange={(e) => this.props.onPosChange(e, id)}
+              />
+              <InputField
+                input={true}
+                className="company-input"
+                label="Company"
+                type="text"
+                onChange={(e) => this.props.onCompChange(e, id)}
+              />
+              <InputField
+                input={true}
+                className=" city-input"
+                label="City"
+                type="text"
+                onChange={(e) => this.props.onCityChange(e, id)}
+              />
+              <InputField
+                input={true}
+                className="from-input"
+                label="From"
+                type="text"
+                onChange={(e) => this.props.onFromChange(e, id)}
+              />
+              <InputField
+                input={true}
+                className="to-input"
+                label="To"
+                type="text"
+                onChange={(e) => this.props.onToChange(e, id)}
+              />
+              <InputField
+                input={false}
+                className="job-details-input"
+                placeholder="lines will be converted to bullet points"
+                label="Details"
+                onChange={(e) => this.props.onDeetsChange(e, id)}
+              />
+
+              <Button
+                text="Delete"
+                className="del-btn"
+                clickEvent={() => {
+                  this.props.onDeleteBlock(id);
+                  this.onDelete(id);
+                }}
+              />
+            </div>
+          );
+        })}
         <Button text="Add" clickEvent={this.onAdd} />
       </section>
     );

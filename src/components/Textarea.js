@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import './style/input.css';
 
-class Input extends Component {
+class Textarea extends Component {
   constructor(props) {
     super(props);
 
@@ -13,18 +12,16 @@ class Input extends Component {
   }
 
   render() {
-    const { className, type, value, placeholder } = this.props;
+    const { className, placeholder } = this.props;
 
     return (
-      <input
-        type={type}
+      <textarea
         className={className}
-        placeholder={placeholder}
-        value={value}
         onChange={this.handleChange}
+        placeholder={placeholder}
       />
     );
   }
 }
 
-export default Input;
+export default Textarea;

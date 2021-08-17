@@ -1,7 +1,12 @@
 import React from 'react';
+import './style/button.css';
 
 const Button = (props) => (
-  <button className="btn" onClick={props.clickEvent} type="button">
+  <button
+    className={(props.className && props.className) || 'btn'}
+    onClick={props.clickEvent}
+    type="button"
+  >
     {props.text}
   </button>
 );

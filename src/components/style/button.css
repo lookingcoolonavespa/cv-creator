@@ -7,3 +7,16 @@ button {
   cursor: pointer;
   outline: inherit;
 }
+
+button {
+  width: 100%;
+  background-color: #db4c3f;
+  color: white;
+  margin-bottom: 10px;
+  padding: 0.5em;
+  border-radius: 5px;
+}
+
+button:hover {
+  filter: brightness(1.1);
+}
