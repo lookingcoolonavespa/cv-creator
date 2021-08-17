@@ -1,0 +1,29 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Lato', sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Source Sans Pro', sans-serif;
+  background-color: #eff0d1;
+}
+#resume {
+  width: 80%;
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: white;
+  min-height: 100vh;
+  padding: 2em 3em;
+  box-sizing: border-box;
+  border-left: 10px solid rgb(102, 102, 102);
+}
+
+section {
+  width: 100%;
+}

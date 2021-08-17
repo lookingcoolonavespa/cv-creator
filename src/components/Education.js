@@ -33,6 +33,7 @@ class Education extends Component {
                 input={true}
                 className="school-name-input"
                 label="School Name"
+                name={`${id}-name`}
                 type="text"
                 onChange={(e) => this.props.onSchoolChange(e, id)}
               />
@@ -40,6 +41,7 @@ class Education extends Component {
                 input={true}
                 className="city-input"
                 label="City"
+                name={`${id}-city`}
                 type="text"
                 onChange={(e) => this.props.onCityChange(e, id)}
               />
@@ -47,6 +49,7 @@ class Education extends Component {
                 input={true}
                 className=" degree-input"
                 label="Degree"
+                name={`${id}-degree`}
                 type="text"
                 onChange={(e) => this.props.onDegreeChange(e, id)}
               />
@@ -54,6 +57,7 @@ class Education extends Component {
                 input={true}
                 className="from-input"
                 label="From"
+                name={`${id}-from`}
                 type="text"
                 onChange={(e) => this.props.onFromChange(e, id)}
               />
@@ -61,6 +65,7 @@ class Education extends Component {
                 input={true}
                 className="to-input"
                 label="To"
+                name={`${id}-to`}
                 type="text"
                 onChange={(e) => this.props.onToChange(e, id)}
               />

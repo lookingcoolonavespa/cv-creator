@@ -5,7 +5,7 @@ const Button = (props) => (
   <button
     className={(props.className && props.className) || 'btn'}
     onClick={props.clickEvent}
-    type="button"
+    type={props.type || 'button'}
   >
     {props.text}
   </button>

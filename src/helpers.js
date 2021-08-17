@@ -1,7 +1,7 @@
 import uniqid from 'uniqid';
 
 const helpers = {
-  onDelete(id) {
+  onDeleteBlock(id) {
     this.setState((prevState) => {
       prevState.blocks.splice(
         prevState.blocks.findIndex((block) => block.id === id),
@@ -10,7 +10,7 @@ const helpers = {
       return { blocks: [...prevState.blocks] };
     });
   },
-  onAdd() {
+  onAddBlock() {
     this.setState((prevState) => {
       const section = {};
       section.id = uniqid();

@@ -10,6 +10,7 @@ class Personal extends Component {
           input={true}
           className="name-input"
           label="Name"
+          name="name"
           type="text"
           onChange={this.props.onNameChange}
         />
@@ -17,6 +18,7 @@ class Personal extends Component {
           input={true}
           className="address-input"
           label="Address"
+          name="address"
           type="text"
           onChange={this.props.onAddressChange}
         />
@@ -24,6 +26,8 @@ class Personal extends Component {
           input={true}
           className="phone-input"
           label="Phone"
+          name="phone"
+          pattern="^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$"
           type="text"
           onChange={this.props.onPhoneChange}
         />
@@ -31,7 +35,8 @@ class Personal extends Component {
           input={true}
           className="email-input"
           label="Email"
-          type="text"
+          name="email"
+          type="email"
           onChange={this.props.onEmailChange}
         />
       </section>

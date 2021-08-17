@@ -31,6 +31,7 @@ class Education extends Component {
                 input={true}
                 className="position-input"
                 label="Position"
+                name={`${id}-position`}
                 type="text"
                 onChange={(e) => this.props.onPosChange(e, id)}
               />
@@ -38,6 +39,7 @@ class Education extends Component {
                 input={true}
                 className="company-input"
                 label="Company"
+                name={`${id}-company`}
                 type="text"
                 onChange={(e) => this.props.onCompChange(e, id)}
               />
@@ -45,6 +47,7 @@ class Education extends Component {
                 input={true}
                 className=" city-input"
                 label="City"
+                name={`${id}-city`}
                 type="text"
                 onChange={(e) => this.props.onCityChange(e, id)}
               />
@@ -52,6 +55,7 @@ class Education extends Component {
                 input={true}
                 className="from-input"
                 label="From"
+                name={`${id}-from`}
                 type="text"
                 onChange={(e) => this.props.onFromChange(e, id)}
               />
@@ -59,6 +63,7 @@ class Education extends Component {
                 input={true}
                 className="to-input"
                 label="To"
+                name={`${id}-to`}
                 type="text"
                 onChange={(e) => this.props.onToChange(e, id)}
               />
