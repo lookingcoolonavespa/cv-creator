@@ -5,6 +5,8 @@ import Education from './components/Education.js';
 import Button from './components/Button.js';
 import Resume from './components/Resume.js';
 
+import uniqid from 'uniqid';
+
 import './globalStyles.css';
 
 class App extends Component {
@@ -16,7 +18,9 @@ class App extends Component {
     this.onSubmit = this.onSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleBlockChange = this.handleBlockChange.bind(this);
+    this.handleAddBlock = this.handleAddBlock.bind(this);
     this.handleDeleteBlock = this.handleDeleteBlock.bind(this);
+    this.onEdit = this.onEdit.bind(this);
 
     this.form = React.createRef();
   }
@@ -32,9 +36,16 @@ class App extends Component {
       prevState[type][blockID][key] = val;
       return { [type]: prevState[type] };
     });
-    console.log(this.state);
   }
 
+  handleAddBlock(type) {
+    if (this.state[type] === undefined) this.setState({ [type]: {} });
+    const newID = uniqid();
+    this.setState((prevState) => {
+      prevState[type][newID] = {};
+      return { [type]: prevState[type] };
+    });
+  }
   handleDeleteBlock(type, id) {
     if (this.state[type] === undefined) return;
     if (this.state[type][id] === undefined) return;
@@ -50,7 +61,6 @@ class App extends Component {
 
   onSubmit(e) {
     e.preventDefault();
-    console.log('hi');
     if (!this.form.current.reportValidity()) {
       this.setState({ displayErrors: true });
       return;
@@ -59,20 +69,27 @@ class App extends Component {
     this.setState({ submitted: true });
   }
 
+  onEdit() {
+    this.setState({ submitted: false });
+    console.log(this.state);
+  }
+
   render() {
     const { displayErrors } = this.state;
-    console.log(displayErrors);
     return (
       <div id="resume">
         {this.state.submitted === true && (
-          <Resume
-            name={this.state.name}
-            address={this.state.address}
-            phone={this.state.phone}
-            email={this.state.email}
-            expBlock={this.state.expBlock}
-            eduBlock={this.state.eduBlock}
-          />
+          <div>
+            <Button type="button" text="Edit" clickEvent={this.onEdit} />
+            <Resume
+              name={this.state.name}
+              address={this.state.address}
+              phone={this.state.phone}
+              email={this.state.email}
+              expBlock={this.state.expBlock}
+              eduBlock={this.state.eduBlock}
+            />
+          </div>
         )}
         {this.state.submitted === false && (
           <form
@@ -86,6 +103,10 @@ class App extends Component {
               onAddressChange={(e) => this.handleChange('address', e)}
               onPhoneChange={(e) => this.handleChange('phone', e)}
               onEmailChange={(e) => this.handleChange('email', e)}
+              nameVal={this.state.name}
+              addressVal={this.state.address}
+              phoneVal={this.state.phone}
+              emailVal={this.state.email}
             />
             <Experience
               onPosChange={(e, id) =>
@@ -106,8 +127,9 @@ class App extends Component {
               onDeetsChange={(e, id) =>
                 this.handleBlockChange('expBlock', id, 'details', e)
               }
+              onAddBlock={() => this.handleAddBlock('expBlock')}
               onDeleteBlock={(id) => this.handleDeleteBlock('expBlock', id)}
-              submitted={this.state.submitted}
+              allBlocks={this.state.expBlock || ''}
             />
             <Education
               onSchoolChange={(e, id) =>
@@ -120,13 +142,14 @@ class App extends Component {
                 this.handleBlockChange('eduBlock', id, 'degree', e)
               }
               onFromChange={(e, id) =>
-                this.handleBlockChange('eduBlock', id, 'From', e)
+                this.handleBlockChange('eduBlock', id, 'from', e)
               }
               onToChange={(e, id) =>
-                this.handleBlockChange('eduBlock', id, 'To', e)
+                this.handleBlockChange('eduBlock', id, 'to', e)
               }
+              onAddBlock={() => this.handleAddBlock('eduBlock')}
               onDeleteBlock={(id) => this.handleDeleteBlock('eduBlock', id)}
-              submitted={this.state.submitted}
+              allBlocks={this.state.eduBlock || ''}
             />
             <Button
               text="Submit"

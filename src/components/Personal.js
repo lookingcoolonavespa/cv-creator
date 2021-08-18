@@ -13,6 +13,7 @@ class Personal extends Component {
           name="name"
           type="text"
           onChange={this.props.onNameChange}
+          value={this.props.nameVal}
         />
         <InputField
           input={true}
@@ -21,6 +22,7 @@ class Personal extends Component {
           name="address"
           type="text"
           onChange={this.props.onAddressChange}
+          value={this.props.addressVal}
         />
         <InputField
           input={true}
@@ -30,6 +32,7 @@ class Personal extends Component {
           pattern="^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$"
           type="text"
           onChange={this.props.onPhoneChange}
+          value={this.props.phoneVal}
         />
         <InputField
           input={true}
@@ -38,6 +41,7 @@ class Personal extends Component {
           name="email"
           type="email"
           onChange={this.props.onEmailChange}
+          value={this.props.emailVal}
         />
       </section>
     );

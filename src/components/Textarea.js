@@ -12,13 +12,15 @@ class Textarea extends Component {
   }
 
   render() {
-    const { className, placeholder } = this.props;
+    const { className, placeholder, value } = this.props;
 
     return (
       <textarea
         className={className}
         onChange={this.handleChange}
         placeholder={placeholder}
+        required={true}
+        defaultValue={value}
       />
     );
   }
