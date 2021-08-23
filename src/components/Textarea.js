@@ -1,29 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Textarea extends Component {
-  constructor(props) {
-    super(props);
+const Textarea = (props) => {
+  const { className, placeholder, value } = props;
 
-    this.handleChange = this.handleChange.bind(this);
+  function handleChange(e) {
+    props.onChange && props.onChange(e.target.value);
   }
 
-  handleChange(e) {
-    this.props.onChange && this.props.onChange(e.target.value);
-  }
-
-  render() {
-    const { className, placeholder, value } = this.props;
-
-    return (
-      <textarea
-        className={className}
-        onChange={this.handleChange}
-        placeholder={placeholder}
-        required={true}
-        defaultValue={value}
-      />
-    );
-  }
-}
+  return (
+    <textarea
+      className={className}
+      onChange={handleChange}
+      placeholder={placeholder}
+      required={true}
+      defaultValue={value}
+    />
+  );
+};
 
 export default Textarea;
